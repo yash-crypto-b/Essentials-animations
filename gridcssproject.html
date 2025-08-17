@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grids Projects and Fun</title>
+    <style>
+        
+        .car-animation {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, #00c380 60%, #b2f7ef 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .car-animation .road {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            height: 40px;
+            background: #222;
+            border-radius: 0 0 40px 40px;
+            z-index: 1;
+            overflow: hidden;
+        }
+        .car-animation .road .lane {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: repeating-linear-gradient(
+                to right,
+                #fff 0 30px,
+                transparent 30px 60px
+            );
+            transform: translateY(-50%);
+            opacity: 0.7;
+        }
+        .car-animation .car {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 50px;
+            z-index: 2;
+            animation: car-bounce 1.2s infinite cubic-bezier(.5,0,.5,1);
+        }
+        .car-animation .car-body {
+            position: absolute;
+            bottom: 18px;
+            left: 10px;
+            width: 100px;
+            height: 25px;
+            background: linear-gradient(90deg, #4a90e2 80%, #357ab7 100%);
+            border-radius: 20px 40px 30px 20px / 30px 30px 20px 20px;
+            box-shadow: 0 4px 12px #0004;
+        }
+        .car-animation .car-top {
+            position: absolute;
+            bottom: 32px;
+            left: 30px;
+            width: 50px;
+            height: 18px;
+            background: #eaf6fb;
+            border-radius: 15px 15px 10px 10px / 20px 20px 10px 10px;
+            border: 2px solid #357ab7;
+        }
+        .car-animation .window {
+            position: absolute;
+            bottom: 36px;
+            left: 38px;
+            width: 34px;
+            height: 12px;
+            background: #b3e0fc;
+            border-radius: 8px 8px 8px 8px;
+            opacity: 0.8;
+        }
+        .car-animation .wheel {
+            position: absolute;
+            width: 22px;
+            height: 22px;
+            background: #111;
+            border-radius: 50%;
+            bottom: 0;
+            box-shadow: 0 2px 6px #0008;
+            border: 3px solid #444;
+            animation: wheel-spin 0.6s linear infinite;
+        }
+        .car-animation .wheel.left {
+            left: 18px;
+        }
+        .car-animation .wheel.right {
+            right: 18px;
+        }
+        .car-animation .headlight {
+            position: absolute;
+            right: 0;
+            bottom: 28px;
+            width: 12px;
+            height: 8px;
+            background: #fffbe0;
+            border-radius: 0 8px 8px 0;
+            box-shadow: 0 0 16px 4px #fffbe0aa;
+            opacity: 0.7;
+        }
+        @keyframes car-bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(-8px); }
+        }
+        @keyframes wheel-spin {
+            100% { transform: rotate(360deg); }
+        }
+
+        body {
+            background-color: #111;
+            color: #fff;
+            min-height: 100vh;
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 1.3rem;
+        }
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: 2fr 1fr;
+            gap: 16px;
+            height: min(calc(100vw / 2), calc(100vh - 100px));
+            margin: 0 0 0 0;
+            align-items: stretch;
+            justify-items: stretch;
+        }
+        .box {
+            background: #222;
+            border: 2px solid #444;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            border-radius: 8px;
+            width: 100%;
+            height: 100%;
+        }
+        .shoe-demo {
+          position: relative;
+          width: 100px;
+          height: 50px;
+          margin: 0 auto;
+          perspective: 1000px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100%;
+        }
+
+.shoe {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transform: rotateX(0deg) rotateY(0deg);
+  transition: transform 0.6s;
+  position: relative;
+  width: 180px;
+  height: 70px;
+}
+
+.shoe-demo:hover .shoe {
+  transform: rotateX(360deg) rotateY(360deg);
+}
+
+.sole {
+  position: absolute;
+  bottom: 0;
+  left: 10px;
+  width: 160px;
+  height: 20px;
+  background: #222;
+  border-radius: 0 0 40px 40px / 0 0 20px 20px;
+  z-index: 1;
+}
+
+.body {
+  position: absolute;
+  bottom: 10px;
+  left: 20px;
+  width: 140px;
+  height: 40px;
+  background: #4a90e2;
+  border-radius: 40px 60px 50px 40px / 40px 40px 30px 30px;
+  z-index: 2;
+}
+
+.laces {
+  position: absolute;
+  left: 50px;
+  top: 30px;
+  width: 80px;
+  height: 10px;
+  background: repeating-linear-gradient(
+    to right,
+    #fff 0 8px,
+    transparent 8px 16px
+  );
+  border-radius: 5px;
+  z-index: 3;
+}
+
+.heel {
+  position: absolute;
+  left: 20px;
+  bottom: 20px;
+  width: 25px;
+  height: 30px;
+  background: #357ab7;
+  border-radius: 10px 20px 20px 10px / 20px 20px 20px 20px;
+  z-index: 4;
+}
+
+.toe {
+  position: absolute;
+  right: 10px;
+  bottom: 15px;
+  width: 30px;
+  height: 25px;
+  background: #357ab7;
+  border-radius: 30px 30px 30px 30px;
+  z-index: 4;
+}
+    </style>
+</head>
+<body>
+    <h1 style="text-align:center; margin-top:32px; letter-spacing:2px;">ESSENTIALS</h1>
+    <h2 style="text-align:center; margin: 16px 0; font-size:1.2rem; font-weight:normal; color:#ffe082; letter-spacing:1px;">
+      "You need two things to reach the top of the hill: firstly, it's extremely important to wear a shoe and secondly, use a car."
+    </h2>
+    <div class="grid-container">
+        <div class="box">
+            <div class="shoe-demo">
+              <div class="shoe">
+                <div class="sole"></div>
+                <div class="body"></div>
+                <div class="laces"></div>
+                <div class="heel"></div>
+                <div class="toe"></div>
+              </div>
+            </div>
+        </div>
+        <div class="box car-animation">
+            <div class="road">
+                <div class="lane"></div>
+            </div>
+            <div class="car">
+                <div class="car-body"></div>
+                <div class="car-top"></div>
+                <div class="window"></div>
+                <div class="wheel left"></div>
+                <div class="wheel right"></div>
+                <div class="headlight"></div>
+            </div>
+        </div>
+    </div>
+
+    
+</body>
+    <footer style="position: fixed; bottom: 0; left: 0; width: 100%; background: #181818; color: #fff; padding: 16px 0; text-align: center; letter-spacing: 1px; font-family: Arial, Helvetica, sans-serif; font-size: 1.3rem;">
+        <ul style="list-style: disc; display: inline-block; text-align: left; margin: 0; padding-left: 20px;">
+            <li>See you at the top</li>
+        </ul>
+    </footer>
+</html>
+
